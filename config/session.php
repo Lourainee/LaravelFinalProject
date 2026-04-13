@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Str;
+
 return [
 
     /*
@@ -20,6 +22,31 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Session Cookie Name
+    |--------------------------------------------------------------------------
+    |
+    | The name of the cookie used to identify a session instance.
+    |
+    */
+
+    'cookie' => env(
+        'SESSION_COOKIE',
+        env('SESSION_NAME', Str::slug(env('APP_NAME', 'laravel'), '_').'_session')
+    ),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session File Location
+    |--------------------------------------------------------------------------
+    |
+    | When using the "file" session driver, sessions are stored on disk.
+    |
+    */
+
+    'files' => storage_path('framework/sessions'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Session Name
     |--------------------------------------------------------------------------
     |
@@ -29,6 +56,7 @@ return [
     |
     */
 
+    // Kept for backwards compatibility with this project.
     'name' => env('SESSION_NAME', 'LARAVEL_SESSION'),
 
     /*
@@ -45,6 +73,19 @@ return [
     'lifetime' => env('SESSION_LIFETIME', 120),
 
     'expire_on_close' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Sweeping Lottery
+    |--------------------------------------------------------------------------
+    |
+    | Some session drivers must manually sweep their storage location to get
+    | rid of old sessions. Here are the chances that it will happen on a
+    | given request. By default, the odds are 2 out of 100.
+    |
+    */
+
+    'lottery' => [2, 100],
 
     /*
     |--------------------------------------------------------------------------
@@ -82,7 +123,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN'),
+    'domain' => null,
 
     /*
     |--------------------------------------------------------------------------
