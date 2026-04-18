@@ -79,17 +79,19 @@
                 <button type="submit" class="flex-1 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium">
                     Update Task
                 </button>
-                <form action="{{ route('tasks.destroy', $task) }}" method="POST" class="flex-1" onsubmit="return confirm('Are you sure?');">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="w-full px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium">
-                        Delete
-                    </button>
-                </form>
                 <a href="{{ route('tasks.index') }}" class="flex-1 px-6 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition font-medium text-center">
                     Cancel
                 </a>
             </div>
+        </form>
+        
+        <!-- Delete Form (outside of update form) -->
+        <form action="{{ route('tasks.destroy', $task) }}" method="POST" class="mt-4" onsubmit="return confirm('Are you sure you want to delete this task?');">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="w-full px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium">
+                Delete Task
+            </button>
         </form>
     </div>
 </div>

@@ -26,6 +26,5 @@ $app->singleton(
 );
 
 
-*/
 
 return $app;

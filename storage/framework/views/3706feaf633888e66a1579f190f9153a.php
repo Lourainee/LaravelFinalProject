@@ -88,7 +88,7 @@ unset($__errorArgs, $__bag); ?>
                 </div>
 
                 <div>
-                    <label for="due_date" class="block text-sm font-medium text-gray-700 mb-2">Due Date * (April - December 2026)</label>
+                    <label for="due_date" class="block text-sm font-medium text-gray-700 mb-2">Due Date *</label>
                     <input type="date" id="due_date" name="due_date" 
                         value="<?php echo e(old('due_date', $task->due_date?->format('Y-m-d'))); ?>"
                         min="2026-04-09" max="2026-12-31"
@@ -137,17 +137,19 @@ unset($__errorArgs, $__bag); ?>
                 <button type="submit" class="flex-1 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium">
                     Update Task
                 </button>
-                <form action="<?php echo e(route('tasks.destroy', $task)); ?>" method="POST" class="flex-1" onsubmit="return confirm('Are you sure?');">
-                    <?php echo csrf_field(); ?>
-                    <?php echo method_field('DELETE'); ?>
-                    <button type="submit" class="w-full px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium">
-                        Delete
-                    </button>
-                </form>
                 <a href="<?php echo e(route('tasks.index')); ?>" class="flex-1 px-6 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition font-medium text-center">
                     Cancel
                 </a>
             </div>
+        </form>
+        
+        <!-- Delete Form (outside of update form) -->
+        <form action="<?php echo e(route('tasks.destroy', $task)); ?>" method="POST" class="mt-4" onsubmit="return confirm('Are you sure you want to delete this task?');">
+            <?php echo csrf_field(); ?>
+            <?php echo method_field('DELETE'); ?>
+            <button type="submit" class="w-full px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium">
+                Delete Task
+            </button>
         </form>
     </div>
 </div>
