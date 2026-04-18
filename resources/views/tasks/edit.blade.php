@@ -13,7 +13,7 @@
             <div>
                 <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Task Title *</label>
                 <input type="text" id="title" name="title" value="{{ old('title', $task->title) }}" 
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('title') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 @error('title') border-red-500 @enderror"
                     required>
                 @error('title')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -23,7 +23,7 @@
             <div>
                 <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description *</label>
                 <textarea id="description" name="description" rows="5"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('description') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 @error('description') border-red-500 @enderror"
                     required>{{ old('description', $task->description) }}</textarea>
                 <p class="text-xs text-gray-500 mt-1">Minimum 10 characters</p>
                 @error('description')
@@ -35,7 +35,7 @@
                 <div>
                     <label for="status" class="block text-sm font-medium text-gray-700 mb-2">Status *</label>
                     <select id="status" name="status" 
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('status') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 @error('status') border-red-500 @enderror"
                         required>
                         <option value="pending" {{ old('status', $task->status) === 'pending' ? 'selected' : '' }}>Pending</option>
                         <option value="done" {{ old('status', $task->status) === 'done' ? 'selected' : '' }}>Done</option>
@@ -46,11 +46,11 @@
                 </div>
 
                 <div>
-                    <label for="due_date" class="block text-sm font-medium text-gray-700 mb-2">Due Date * (April - December 2026)</label>
+                    <label for="due_date" class="block text-sm font-medium text-gray-700 mb-2">Due Date *</label>
                     <input type="date" id="due_date" name="due_date" 
                         value="{{ old('due_date', $task->due_date?->format('Y-m-d')) }}"
                         min="2026-04-09" max="2026-12-31"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('due_date') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 @error('due_date') border-red-500 @enderror"
                         required>
                     @error('due_date')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>

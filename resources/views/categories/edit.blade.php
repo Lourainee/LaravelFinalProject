@@ -13,7 +13,7 @@
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Category Name *</label>
                 <input type="text" id="name" name="name" value="{{ old('name', $category->name) }}" 
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('name') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 @error('name') border-red-500 @enderror"
                     required>
                 @error('name')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -29,7 +29,7 @@
                         required>
                     <input type="text" id="color-text" name="color-text" value="{{ old('color', $category->color) }}" 
                         placeholder="#3B82F6"
-                        class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                         onchange="if(/^#[A-Fa-f0-9]{6}$/.test(this.value)) document.getElementById('color').value = this.value">
                 </div>
                 @error('color')
